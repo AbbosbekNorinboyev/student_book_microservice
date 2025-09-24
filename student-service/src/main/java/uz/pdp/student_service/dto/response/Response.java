@@ -1,4 +1,4 @@
-package uz.pdp.student_service.dto;
+package uz.pdp.student_service.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -12,10 +12,10 @@ import java.util.List;
 @Setter
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse<T> {
+public class Response<T> {
     private int code;
     private String message;
     private boolean success;
     private T data;
-    private List<ErrorDTO> errors;
+    private List<ErrorResponse> errors;
 }

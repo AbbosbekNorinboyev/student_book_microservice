@@ -1,4 +1,4 @@
-package uz.pdp.student_service.dto;
+package uz.pdp.book_service.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ErrorDTO {
+public class ErrorResponse {
     private String field;
     private String message;
 }

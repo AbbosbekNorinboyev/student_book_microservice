@@ -1,22 +1,22 @@
 package uz.pdp.book_service.service;
 
-import uz.pdp.book_service.dto.ApiResponse;
-import uz.pdp.book_service.dto.BookCreateDTO;
+import uz.pdp.book_service.dto.BookDto;
+import uz.pdp.book_service.dto.response.Response;
 
 import java.util.List;
 
 public interface BookService {
-    ApiResponse<BookCreateDTO> createBook(BookCreateDTO bookCreateDTO);
+    Response<?> createBook(BookDto bookDto);
 
-    ApiResponse<BookCreateDTO> getBookById(Long id);
+    Response<?> getBookById(Long id);
 
-    ApiResponse<List<BookCreateDTO>> getAllBook();
+    Response<?> getAllBook();
 
-    ApiResponse<BookCreateDTO> updateBook(BookCreateDTO bookCreateDTO);
+    Response<?> updateBook(BookDto bookDto);
 
-    ApiResponse<Void> deleteBookById(Long studentId);
+    Response<?> deleteBookById(Long studentId);
 
-    ApiResponse<Void> deleteBookByStudentId(Long id);
+    Response<?> deleteBookByStudentId(Long id);
 
     List<Integer> getAllStudentIds();
 }

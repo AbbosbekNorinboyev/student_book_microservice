@@ -1,9 +1,5 @@
 package uz.pdp.book_service.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -15,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BookCreateDTO {
+public class BookDto {
     private Long id;
     @NotBlank(message = "Title can not be null or empty")
     private String title;

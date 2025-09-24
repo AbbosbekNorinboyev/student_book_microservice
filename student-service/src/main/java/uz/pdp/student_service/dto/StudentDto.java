@@ -2,7 +2,6 @@ package uz.pdp.student_service.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @NoArgsConstructor
@@ -11,7 +10,7 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
-public class StudentCreateDTO {
+public class StudentDto {
     private Long id;
     @NotBlank(message = "FirstName can not be null or empty")
     private String firstname;
