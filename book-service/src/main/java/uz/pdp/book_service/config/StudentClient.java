@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient("STUDENT-SERVICE")
+@FeignClient(name = "STUDENT-SERVICE")
 public interface StudentClient {
     @GetMapping("/api/students/ids/list")
     List<Integer> getIds();
