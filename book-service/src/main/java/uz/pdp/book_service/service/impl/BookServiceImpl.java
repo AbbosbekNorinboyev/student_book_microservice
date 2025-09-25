@@ -37,6 +37,7 @@ public class BookServiceImpl implements BookService {
             } else {
                 return Response.builder()
                         .code(HttpStatus.NOT_FOUND.value())
+                        .status(HttpStatus.NOT_FOUND)
                         .message("Student not found: " + bookDto.getStudentId())
                         .success(false)
                         .build();
@@ -44,6 +45,7 @@ public class BookServiceImpl implements BookService {
             logger.info("Book successfully saved");
             return Response.builder()
                     .code(HttpStatus.OK.value())
+                    .status(HttpStatus.OK)
                     .message("Ok")
                     .success(true)
                     .build();
@@ -60,6 +62,7 @@ public class BookServiceImpl implements BookService {
             logger.info("Book successfully found: " + id);
             return Response.builder()
                     .code(HttpStatus.OK.value())
+                    .status(HttpStatus.OK)
                     .message("Ok")
                     .success(true)
                     .data(bookInterfaceMapper.toDto(book))
@@ -75,6 +78,7 @@ public class BookServiceImpl implements BookService {
         logger.info("Book list successfully saved");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Ok")
                 .success(true)
                 .data(books.stream().map(bookMapper::toDto).toList())
@@ -91,6 +95,7 @@ public class BookServiceImpl implements BookService {
         logger.info("Book successfully updated");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Book successfully updated")
                 .success(true)
                 .data(bookInterfaceMapper.toDto(existingBook))
@@ -105,6 +110,7 @@ public class BookServiceImpl implements BookService {
         logger.info("Book successfully deleted");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Book successfully deleted")
                 .success(true)
                 .build();
@@ -115,6 +121,7 @@ public class BookServiceImpl implements BookService {
         bookRepository.deleteBookByStudentId(studentId);
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Book successfully deleted by studentId")
                 .success(true)
                 .build();

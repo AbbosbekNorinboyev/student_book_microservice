@@ -11,7 +11,6 @@ import uz.pdp.student_service.dto.response.Response;
 import uz.pdp.student_service.entity.Student;
 import uz.pdp.student_service.exception.ResourceNotFoundException;
 import uz.pdp.student_service.mapper.StudentMapper;
-import uz.pdp.student_service.mapper.interfaces.StudentInterfaceMapper;
 import uz.pdp.student_service.repository.StudentRepository;
 import uz.pdp.student_service.service.StudentService;
 
@@ -38,6 +37,7 @@ public class StudentServiceImpl implements StudentService {
         logger.info("Student successfully saved");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Student successfully saved")
                 .success(true)
                 .build();
@@ -50,6 +50,7 @@ public class StudentServiceImpl implements StudentService {
         logger.info("Student successfully found");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Ok")
                 .success(true)
                 .data(studentMapper.toDto(student))
@@ -62,6 +63,7 @@ public class StudentServiceImpl implements StudentService {
         logger.info("Student list successfully found");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Ok")
                 .success(true)
                 .data(students.stream().map(studentMapper::toDto).toList())
@@ -79,6 +81,7 @@ public class StudentServiceImpl implements StudentService {
         logger.info("Student successfully updated");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Student successfully updated")
                 .success(true)
                 .build();
@@ -93,6 +96,7 @@ public class StudentServiceImpl implements StudentService {
         logger.info("Student successfully deleted");
         return Response.builder()
                 .code(HttpStatus.OK.value())
+                .status(HttpStatus.OK)
                 .message("Student successfully deleted")
                 .success(true)
                 .build();
