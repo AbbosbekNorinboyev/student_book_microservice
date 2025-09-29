@@ -16,7 +16,7 @@ public interface BookService {
 
     Response<?> deleteBookById(Long studentId);
 
-    Response<?> deleteBookByStudentId(Long id);
+    Response<?> deleteBookByStudentId(Integer id);
 
     List<Integer> getAllStudentIds();
 }

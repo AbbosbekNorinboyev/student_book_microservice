@@ -11,7 +11,6 @@ public class BookMapper {
                 .id(bookDto.getId())
                 .title(bookDto.getTitle())
                 .page(bookDto.getPage())
-                .studentId(bookDto.getStudentId())
                 .build();
     }
 

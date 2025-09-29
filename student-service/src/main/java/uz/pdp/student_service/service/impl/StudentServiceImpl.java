@@ -14,7 +14,10 @@ import uz.pdp.student_service.mapper.StudentMapper;
 import uz.pdp.student_service.repository.StudentRepository;
 import uz.pdp.student_service.service.StudentService;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import static uz.pdp.student_service.util.Util.localDateTimeFormatter;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +43,7 @@ public class StudentServiceImpl implements StudentService {
                 .status(HttpStatus.OK)
                 .message("Student successfully saved")
                 .success(true)
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
 
@@ -54,6 +58,7 @@ public class StudentServiceImpl implements StudentService {
                 .message("Ok")
                 .success(true)
                 .data(studentMapper.toDto(student))
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
 
@@ -67,6 +72,7 @@ public class StudentServiceImpl implements StudentService {
                 .message("Ok")
                 .success(true)
                 .data(students.stream().map(studentMapper::toDto).toList())
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
 
@@ -84,6 +90,7 @@ public class StudentServiceImpl implements StudentService {
                 .status(HttpStatus.OK)
                 .message("Student successfully updated")
                 .success(true)
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
 
@@ -99,6 +106,7 @@ public class StudentServiceImpl implements StudentService {
                 .status(HttpStatus.OK)
                 .message("Student successfully deleted")
                 .success(true)
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
 
