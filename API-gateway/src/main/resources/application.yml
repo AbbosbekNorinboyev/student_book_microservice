@@ -15,19 +15,19 @@ spring:
               uri: http://localhost:1134/
               predicates:
                 - Path=/api/students/**
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: studentServiceCircuitBreaker
-                    fallbackUri: forward:/fallback/students
+#              filters:
+#                - name: CircuitBreaker
+#                  args:
+#                    name: studentServiceCircuitBreaker
+#                    fallbackUri: forward:/fallback/students
 
             # BOOK SERVICE
             - id: book-service
               uri: http://localhost:1135/
               predicates:
                 - Path=/api/books/**
-              filters:
-                - name: CircuitBreaker
-                  args:
-                    name: bookServiceCircuitBreaker
-                    fallbackUri: forward:/fallback/books
+#              filters:
+#                - name: CircuitBreaker
+#                  args:
+#                    name: bookServiceCircuitBreaker
+#                    fallbackUri: forward:/fallback/books

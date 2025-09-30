@@ -1,12 +1,14 @@
 package uz.pdp.student_service.service.impl;
 
-import org.slf4j.Logger;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import uz.pdp.student_service.config.BookClient;
 import uz.pdp.student_service.dto.StudentDto;
+import uz.pdp.student_service.dto.response.ErrorResponse;
 import uz.pdp.student_service.dto.response.Response;
 import uz.pdp.student_service.entity.Student;
 import uz.pdp.student_service.exception.ResourceNotFoundException;
@@ -94,6 +96,7 @@ public class StudentServiceImpl implements StudentService {
                 .build();
     }
 
+    @CircuitBreaker(name = "bookServiceCircuitBreaker", fallbackMethod = "fallbackBookService")
     @Override
     public Response<?> deleteStudentById(Long id) {
         bookClient.deleteBookByStudentId(id);
@@ -106,6 +109,19 @@ public class StudentServiceImpl implements StudentService {
                 .status(HttpStatus.OK)
                 .message("Student successfully deleted")
                 .success(true)
+                .timestamp(localDateTimeFormatter(LocalDateTime.now()))
+                .build();
+    }
+
+    public Response<?> fallbackBookService(Long id, Throwable throwable) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .message("Book Service ishlamayapti, fallbackdan qaytdi")
+                .build();
+        return Response.builder()
+                .code(HttpStatus.BAD_REQUEST.value())
+                .status(HttpStatus.BAD_REQUEST)
+                .success(false)
+                .errors(List.of(errorResponse))
                 .timestamp(localDateTimeFormatter(LocalDateTime.now()))
                 .build();
     }
